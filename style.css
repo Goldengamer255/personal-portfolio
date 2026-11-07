@@ -1,0 +1,89 @@
+/* Color Variables & Font Setup */
+:root {
+    --bg-primary: #ffffff;
+    --text-main: #1a202c;
+    --text-muted: #4a5568;
+    --accent: #0066cc;
+    --border-color: #e2e8f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    color: var(--text-main);
+    background-color: var(--bg-primary);
+    line-height: 1.6;
+    padding: 0 20px;
+}
+
+/* Navigation Layout */
+header {
+    max-width: 1000px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border-color);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--accent);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+/* Core Main Sections Layout */
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+section {
+    padding: 80px 0;
+}
+
+#about h1 {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    letter-spacing: -0.05em;
+}
+
+#about p {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    max-width: 600px;
+}
+
+/* Footer Layout */
+footer {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 0;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
