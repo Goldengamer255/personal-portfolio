@@ -4,14 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tanush | Software Engineer Portfolio</title>
+    <meta name="description" content="Portfolio of Tanush, a Software Engineering (Honours) student at the University of Auckland. Full-stack web apps, backend services and systems projects.">
+    <meta name="theme-color" content="#060913">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<a class="skip" href="#projects">Skip to projects</a>
 
-<!-- Navigation Hub -->
+<!-- Navigation -->
 <header>
-    <nav>
-        <div class="logo">Tanush<span>.dev</span></div>
+    <nav aria-label="Main">
+        <a class="logo" href="#about">Tanush<span>.dev</span></a>
 
         <ul>
             <li><a href="#about">About</a></li>
@@ -23,25 +29,28 @@
 
 <!-- Main Content Area -->
 <main>
-    <!-- High-Impact Hero Introduction Section -->
+    <!-- Hero -->
     <section id="about">
         <div class="hero-container">
             <div class="hero-text animate-fade-in">
                 <h1>Hi, I'm Tanush.</h1>
-                <p>A software engineer focused on building clean, efficient, and impactful web applications.</p>
+                <p class="hero-lead">A software engineer focused on building clean, efficient, and impactful web applications.</p>
+                <p class="hero-sub">I'm a Software Engineering (Honours) student at the University of Auckland, graduating in 2027. I build full-stack apps and backend services, and I like understanding how things work underneath.</p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#projects">See my projects</a>
+                    <a class="btn btn-ghost" href="#contact">Get in touch</a>
+                </div>
+                <p class="availability"><span class="dot" aria-hidden="true"></span>Open to internships and graduate roles</p>
             </div>
             <div class="hero-portrait-frame animate-float">
-                <!-- Placeholder graphic until you save your portrait image -->
+                <img src="avatar-720.jpg" alt="Portrait of Tanush" width="720" height="720">
                 <div class="portrait-glow-overlay"></div>
-                <img src="avatar.jpeg" alt="Tanush Portrait" onerror="this.style.display='none';">
-                <div class="fallback-avatar">&lt;T/&gt;</div>
             </div>
         </div>
     </section>
 
 
-    <!-- Project Grid Section -->
-    <!-- Project Grid Section -->
+    <!-- Project Grid Section (your original, upgraded in a later step) -->
     <section id="projects">
         <h2>Featured Work</h2>
 

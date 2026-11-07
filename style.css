@@ -1,46 +1,60 @@
-/* Advanced Tech Theme Variables */
-/* Upgraded Standout Design System */
+/* ============================================================
+   Tanush portfolio: neon design system
+   ============================================================ */
 :root {
     --bg-main: #060913;
     --bg-surface: #0d1527;
-    --accent-glow: #00f0ff;    /* Cyber Cyan */
-    --accent-highlight: #ff007f; /* High-Voltage Neon Magenta */
-    --accent-blue: #0088ff;      /* Add this line to fix the 3 errors! */
+    --accent-glow: #00f0ff;       /* cyan */
+    --accent-highlight: #ff007f;  /* magenta */
+    --accent-blue: #0088ff;
     --text-bright: #f8fafc;
-    --text-dim: #64748b;
+    --text-body: #c2cbd8;
+    --text-dim: #8a99ad;          /* raised from #64748b so small text passes contrast */
     --border-glow: rgba(255, 0, 127, 0.2);
+    --line: rgba(255, 255, 255, 0.08);
+
+    --font-display: "Space Grotesk", system-ui, sans-serif;
+    --font-body: "Inter", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", "Courier New", monospace;
 }
 
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+}
+
 body {
-    font-family: 'Courier New', Courier, monospace;
-    color: var(--text-bright);
+    font-family: var(--font-body);
+    color: var(--text-body);
     background-color: var(--bg-main);
-    line-height: 1.6;
+    line-height: 1.65;
     padding: 0 20px;
     overflow-x: hidden;
     position: relative;
 
-    /* Tech Matrix Background Grid */
+    /* Tech grid background */
     background-image:
             linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
             linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
     background-size: 40px 40px;
 }
 
-/* Ambient Moving Background Glowing Orbs */
-body::before, body::after {
-    content: '';
-    position: absolute;
-    width: 400px;
-    height: 400px;
+/* Ambient glowing orbs (fixed so they never stretch the page) */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 420px;
+    height: 420px;
     border-radius: 50%;
-    background: radial-gradient(circle, var(--accent-highlight) 0%, transparent 70%);
     opacity: 0.12;
     filter: blur(60px);
     z-index: -1;
@@ -48,25 +62,48 @@ body::before, body::after {
 }
 
 body::before {
-    top: 10%;
-    left: -100px;
+    top: 8%;
+    left: -140px;
+    background: radial-gradient(circle, var(--accent-highlight) 0%, transparent 70%);
     animation: pulseOrb 12s ease-in-out infinite alternate;
 }
 
 body::after {
-    top: 60%;
-    right: -100px;
+    bottom: 5%;
+    right: -140px;
     background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
     animation: pulseOrb 16s ease-in-out infinite alternate-reverse;
 }
 
 @keyframes pulseOrb {
-    0% { transform: scale(1) translate(0px, 0px); }
+    0%   { transform: scale(1) translate(0, 0); }
     100% { transform: scale(1.3) translate(50px, 80px); }
 }
 
+a { color: inherit; }
 
-/* Header & Immersive Navigation */
+:focus-visible {
+    outline: 2px solid var(--accent-glow);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.skip {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    background: var(--accent-glow);
+    color: var(--bg-main);
+    font-weight: 600;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    z-index: 100;
+}
+.skip:focus { top: 1rem; }
+
+/* ============================================================
+   Header and navigation
+   ============================================================ */
 header {
     max-width: 1000px;
     margin: 0 auto;
@@ -76,15 +113,21 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 0;
+    padding: 28px 0;
 }
 
 .logo {
-    font-weight: bold;
-    font-size: 1.3rem;
-    color: var(--accent-glow);
-    text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
-    letter-spacing: -0.05em;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--text-bright);
+    text-decoration: none;
+    letter-spacing: -0.04em;
+}
+
+.logo span {
+    color: var(--accent-highlight);
+    text-shadow: 0 0 10px rgba(255, 0, 127, 0.6);
 }
 
 nav ul {
@@ -93,19 +136,24 @@ nav ul {
     gap: 30px;
 }
 
-nav a {
+nav ul a {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.95rem;
     text-decoration: none;
     color: var(--text-dim);
-    font-weight: 500;
     transition: color 0.2s, text-shadow 0.2s;
 }
 
-nav a:hover {
+nav ul a:hover,
+nav ul a[aria-current="true"] {
     color: var(--text-bright);
-    text-shadow: 0 0 8px #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
 }
 
-/* Centered Main Blueprint */
+/* ============================================================
+   Layout
+   ============================================================ */
 main {
     max-width: 1000px;
     margin: 0 auto;
@@ -115,32 +163,171 @@ section {
     padding: 100px 0;
 }
 
-/* High-Impact Hero Layout */
-#about h1 {
-    font-family: system-ui, sans-serif;
-    font-size: 4rem;
-    margin-bottom: 20px;
-    letter-spacing: -0.05em;
-    color: var(--text-bright); /* Fixes transparency/disappearing bug */
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-}
-
-
-#about p {
-    font-size: 1.25rem;
-    color: var(--accent-highlight); /* Changes the paragraph text color to your custom pink */
-    text-shadow: 0 0 15px rgba(255, 0, 127, 0.2); /* Gives it a subtle, beautiful tech glow */
-    max-width: 650px;
-    font-family: inherit;
-}
-
-/* Unique Grid Sections */
-#projects h2 {
-    font-family: system-ui, sans-serif;
-    font-size: 2.2rem;
-    margin-bottom: 40px;
+h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 4vw, 2.5rem);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
     color: var(--text-bright);
+    margin-bottom: 40px;
 }
+
+/* ============================================================
+   Hero
+   ============================================================ */
+#about {
+    padding-top: 60px;
+}
+
+.hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 48px;
+    flex-wrap: wrap;
+}
+
+.hero-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+#about h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 8vw, 4.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+    color: var(--text-bright);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    margin-bottom: 22px;
+}
+
+.hero-lead {
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--accent-highlight);
+    text-shadow: 0 0 15px rgba(255, 0, 127, 0.2);
+    max-width: 36rem;
+    margin-bottom: 16px;
+}
+
+.hero-sub {
+    max-width: 34rem;
+    font-size: 1.05rem;
+    margin-bottom: 30px;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 28px;
+}
+
+.btn {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.98rem;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.btn-primary {
+    background: var(--accent-glow);
+    color: var(--bg-main);
+    box-shadow: 0 0 22px rgba(0, 240, 255, 0.25);
+}
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.45);
+}
+
+.btn-ghost {
+    color: var(--text-bright);
+    border-color: rgba(255, 255, 255, 0.22);
+}
+.btn-ghost:hover {
+    border-color: var(--accent-highlight);
+    color: var(--accent-highlight);
+    transform: translateY(-2px);
+}
+
+.availability {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-dim);
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #22e58a;
+    box-shadow: 0 0 0 0 rgba(34, 229, 138, 0.6);
+    animation: ping 2.4s ease-out infinite;
+}
+
+@keyframes ping {
+    0%   { box-shadow: 0 0 0 0 rgba(34, 229, 138, 0.55); }
+    80%, 100% { box-shadow: 0 0 0 10px rgba(34, 229, 138, 0); }
+}
+
+/* Portrait frame */
+.hero-portrait-frame {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    flex: none;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    background: linear-gradient(45deg, var(--accent-highlight), var(--accent-glow));
+    box-shadow: 0 0 40px rgba(255, 0, 127, 0.25);
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-portrait-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: contrast(1.05) brightness(0.95);
+}
+
+.portrait-glow-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, transparent 40%, var(--bg-main) 100%);
+    pointer-events: none;
+}
+
+@keyframes float {
+    0%   { transform: translateY(0); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+    50%  { transform: translateY(-12px); border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; }
+    100% { transform: translateY(0); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+}
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in { animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+/* ============================================================
+   Projects (unchanged from your version for now, cleaned of duplicates)
+   ============================================================ */
+#projects h2 { margin-bottom: 40px; }
 
 .project-grid {
     display: grid;
@@ -148,7 +335,6 @@ section {
     gap: 30px;
 }
 
-/* Futuristic Cyberpunk Project Cards */
 .project-card {
     background-color: var(--bg-surface);
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -162,15 +348,14 @@ section {
     transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 
-/* Glow animation on mouse hover */
 .project-card:hover {
     transform: translateY(-5px);
-    border-color: var(--accent-glow);
+    border-color: var(--accent-highlight);
     box-shadow: 0 10px 30px -10px var(--border-glow);
 }
 
 .project-card h3 {
-    font-family: system-ui, sans-serif;
+    font-family: var(--font-display);
     font-size: 1.4rem;
     color: var(--text-bright);
     margin-bottom: 15px;
@@ -183,7 +368,6 @@ section {
     line-height: 1.7;
 }
 
-/* Technical Skill Tags styling */
 .tech-badges {
     display: flex;
     flex-wrap: wrap;
@@ -192,30 +376,40 @@ section {
 }
 
 .tech-badges span {
-    background-color: rgba(0, 136, 255, 0.1);
-    color: var(--accent-blue);
-    border: 1px solid rgba(0, 136, 255, 0.2);
+    background-color: rgba(255, 0, 127, 0.08);
+    color: var(--accent-highlight);
+    border: 1px solid rgba(255, 0, 127, 0.15);
+    font-family: var(--font-mono);
     font-size: 0.75rem;
-    font-weight: bold;
+    font-weight: 700;
     padding: 5px 12px;
     border-radius: 8px;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
 }
 
-/* Custom Interactive Links */
 .project-link {
     text-decoration: none;
     color: var(--accent-glow);
-    font-weight: bold;
+    font-weight: 600;
     font-size: 0.9rem;
-    transition: opacity 0.2s;
+    transition: color 0.2s;
+}
+.project-link:hover { color: var(--accent-highlight); }
+
+/* Scroll reveal (kept from your version) */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.project-link:hover {
-    opacity: 0.8;
-}
-
-/* Structural Footer Layout */
+/* ============================================================
+   Footer (unchanged from your version for now)
+   ============================================================ */
 footer {
     max-width: 1000px;
     margin: 0 auto;
@@ -226,164 +420,26 @@ footer {
 }
 
 footer a {
-    color: var(--accent-blue);
-    text-decoration: none;
-}
-
-/* Hero Layout Grid for Text & Portrait */
-.hero-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-.hero-text {
-    flex: 1;
-    min-width: 300px;
-}
-
-/* Standout 3D Neon Portrait Frame */
-.hero-portrait-frame {
-    position: relative;
-    width: 280px;
-    height: 280px;
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* Organic asymmetrical shape */
-    background: linear-gradient(45deg, var(--accent-blue), var(--accent-glow));
-    box-shadow: 0 0 30px rgba(0, 255, 204, 0.3);
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.hero-portrait-frame:hover {
-    transform: scale(1.05) rotate(3deg);
-    border-color: var(--accent-glow);
-}
-
-.hero-portrait-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the picture crops perfectly into the frame without squishing */
-    z-index: 2;
-    filter: contrast(1.05) brightness(0.95); /* Subtle polish to make it blend into the dark theme */
-}
-
-/* Fallback letter art if avatar.png isn't found yet */
-.fallback-avatar {
-    position: absolute;
-    font-size: 4rem;
-    font-weight: bold;
-    color: var(--text-bright);
-    z-index: 1;
-    font-family: system-ui, sans-serif;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-.portrait-glow-overlay {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 50% 50%, transparent 40%, var(--bg-main) 100%);
-    z-index: 3;
-    pointer-events: none;
-}
-
-/* Continuous Keyframe Animation Loops */
-@keyframes float {
-    0% { transform: translateY(0px); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-    50% { transform: translateY(-12px); border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; }
-    100% { transform: translateY(0px); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-}
-
-.animate-float {
-    animation: float 6s ease-in-out infinite;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fade-in {
-    animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* Class to handle elements waiting for scroll trigger */
-.scroll-reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.scroll-reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Update Logo to utilize your standout accent */
-.logo {
-    font-weight: bold;
-    font-size: 1.3rem;
-    color: var(--text-bright);
-    letter-spacing: -0.05em;
-}
-
-/* Simply targets the '.dev' string if you keep it typed out in HTML */
-.logo span {
-    color: var(--accent-highlight);
-    text-shadow: 0 0 10px rgba(255, 0, 127, 0.6);
-}
-
-
-
-/* Update Portrait Frame to leverage your twin color scheme */
-.hero-portrait-frame {
-    position: relative;
-    width: 280px;
-    height: 280px;
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    background: linear-gradient(45deg, var(--accent-highlight), var(--accent-glow));
-    box-shadow: 0 0 40px rgba(255, 0, 127, 0.25);
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    animation: float 6s ease-in-out infinite;
-}
-
-/* Update Card Hover States to activate your standout accent */
-.project-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-highlight);
-    box-shadow: 0 10px 30px -10px var(--border-glow);
-}
-
-/* Update Technical Badges to match color scheme */
-.tech-badges span {
-    background-color: rgba(255, 0, 127, 0.08);
-    color: var(--accent-highlight);
-    border: 1px solid rgba(255, 0, 127, 0.15);
-    font-size: 0.75rem;
-    font-weight: bold;
-    padding: 5px 12px;
-    border-radius: 8px;
-    letter-spacing: 0.05em;
-}
-
-/* Update Text Links to stand out */
-.project-link {
-    text-decoration: none;
     color: var(--accent-glow);
-    font-weight: bold;
-    font-size: 0.9rem;
-    transition: color 0.2s;
+    text-decoration: none;
+}
+footer a:hover { color: var(--accent-highlight); }
+
+/* ============================================================
+   Small screens and reduced motion
+   ============================================================ */
+@media (max-width: 40rem) {
+    nav { flex-direction: column; align-items: flex-start; gap: 14px; padding: 20px 0; }
+    nav ul { gap: 20px; }
+    section { padding: 70px 0; }
+    .hero-portrait-frame { width: 220px; height: 220px; }
+    .hero-container { gap: 32px; }
 }
 
-.project-link:hover {
-    color: var(--accent-highlight);
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    body::before, body::after,
+    .animate-float, .animate-fade-in, .dot { animation: none; }
+    .scroll-reveal { opacity: 1; transform: none; transition: none; }
+    .project-card, .btn { transition: none; }
 }
