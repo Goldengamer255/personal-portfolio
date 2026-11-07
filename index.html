@@ -22,11 +22,22 @@
 
 <!-- Main Content Area -->
 <main>
-    <!-- Hero Introduction Section -->
+    <!-- High-Impact Hero Introduction Section -->
     <section id="about">
-        <h1>Hi, I'm Tanush.</h1>
-        <p>A software engineer focused on building clean, efficient, and impactful web applications.</p>
+        <div class="hero-container">
+            <div class="hero-text animate-fade-in">
+                <h1>Hi, I'm Tanush.</h1>
+                <p>A software engineer focused on building clean, efficient, and impactful web applications.</p>
+            </div>
+            <div class="hero-portrait-frame animate-float">
+                <!-- Placeholder graphic until you save your portrait image -->
+                <div class="portrait-glow-overlay"></div>
+                <img src="avatar.png" alt="Tanush Portrait" onerror="this.style.display='none';">
+                <div class="fallback-avatar">&lt;T/&gt;</div>
+            </div>
+        </div>
     </section>
+
 
     <!-- Project Grid Section -->
     <!-- Project Grid Section -->
@@ -69,6 +80,8 @@
     <a href="https://github.com" target="_blank">GitHub</a>
     <p>&copy; 2026 Tanush. All rights reserved.</p>
 </footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>

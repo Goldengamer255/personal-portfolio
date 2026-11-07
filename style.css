@@ -1,10 +1,12 @@
-/* Color Variables & Font Setup */
+/* Advanced Tech Theme Variables */
 :root {
-    --bg-primary: #ffffff;
-    --text-main: #1a202c;
-    --text-muted: #4a5568;
-    --accent: #0066cc;
-    --border-color: #e2e8f0;
+    --bg-main: #0a0f1d;
+    --bg-surface: #131b2e;
+    --accent-glow: #00ffcc;
+    --accent-blue: #0088ff;
+    --text-bright: #f8fafc;
+    --text-dim: #94a3b8;
+    --border-glow: rgba(0, 255, 204, 0.15);
 }
 
 * {
@@ -14,149 +16,266 @@
 }
 
 body {
-    font-family: system-ui, -apple-system, sans-serif;
-    color: var(--text-main);
-    background-color: var(--bg-primary);
+    font-family: 'Courier New', Courier, monospace; /* Tech/Terminal Font choice */
+    color: var(--text-bright);
+    background-color: var(--bg-main);
     line-height: 1.6;
     padding: 0 20px;
+    background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, var(--bg-main) 70%);
 }
 
-/* Navigation Layout */
+/* Header & Immersive Navigation */
 header {
     max-width: 1000px;
     margin: 0 auto;
-    border-bottom: 1px solid var(--border-color);
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
+    padding: 30px 0;
 }
 
 .logo {
     font-weight: bold;
-    font-size: 1.2rem;
-    color: var(--accent);
+    font-size: 1.3rem;
+    color: var(--accent-glow);
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+    letter-spacing: -0.05em;
 }
 
 nav ul {
     display: flex;
     list-style: none;
-    gap: 20px;
+    gap: 30px;
 }
 
 nav a {
     text-decoration: none;
-    color: var(--text-muted);
+    color: var(--text-dim);
     font-weight: 500;
+    transition: color 0.2s, text-shadow 0.2s;
 }
 
 nav a:hover {
-    color: var(--accent);
+    color: var(--text-bright);
+    text-shadow: 0 0 8px #ffffff;
 }
 
-/* Core Main Sections Layout */
+/* Centered Main Blueprint */
 main {
     max-width: 1000px;
     margin: 0 auto;
 }
 
 section {
-    padding: 80px 0;
+    padding: 100px 0;
 }
 
+/* High-Impact Hero Layout */
 #about h1 {
-    font-size: 3rem;
-    margin-bottom: 16px;
+    font-family: system-ui, sans-serif;
+    font-size: 4rem;
+    margin-bottom: 20px;
     letter-spacing: -0.05em;
+    background: linear-gradient(to right, var(--text-bright), var(--accent-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 #about p {
     font-size: 1.25rem;
-    color: var(--text-muted);
-    max-width: 600px;
+    color: var(--text-dim);
+    max-width: 650px;
+    font-family: inherit;
 }
 
-/* Footer Layout */
-footer {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 40px 0;
-    border-top: 1px solid var(--border-color);
-    text-align: center;
-}
-
-/* Project Section Header */
+/* Unique Grid Sections */
 #projects h2 {
-    font-size: 2rem;
-    margin-bottom: 32px;
-    letter-spacing: -0.03em;
+    font-family: system-ui, sans-serif;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    color: var(--text-bright);
 }
 
-/* Responsive Grid Configuration */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
 }
 
-/* Individual Project Cards styling */
+/* Futuristic Cyberpunk Project Cards */
 .project-card {
-    background-color: var(--bg-primary);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 32px;
+    background-color: var(--bg-surface);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 35px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 
+/* Glow animation on mouse hover */
 .project-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 20px -8px rgba(0,0,0,0.08);
+    transform: translateY(-5px);
+    border-color: var(--accent-glow);
+    box-shadow: 0 10px 30px -10px var(--border-glow);
 }
 
 .project-card h3 {
-    font-size: 1.35rem;
-    margin-bottom: 12px;
+    font-family: system-ui, sans-serif;
+    font-size: 1.4rem;
+    color: var(--text-bright);
+    margin-bottom: 15px;
 }
 
 .project-card p {
-    color: var(--text-muted);
+    color: var(--text-dim);
     font-size: 0.95rem;
-    margin-bottom: 24px;
+    margin-bottom: 30px;
+    line-height: 1.7;
 }
 
-/* Technical Badges Container */
+/* Technical Skill Tags styling */
 .tech-badges {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 24px;
+    gap: 10px;
+    margin-bottom: 30px;
 }
 
 .tech-badges span {
-    background-color: #f1f5f9;
-    color: #475569;
+    background-color: rgba(0, 136, 255, 0.1);
+    color: var(--accent-blue);
+    border: 1px solid rgba(0, 136, 255, 0.2);
     font-size: 0.75rem;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 6px;
-    text-transform: uppercase;
+    font-weight: bold;
+    padding: 5px 12px;
+    border-radius: 8px;
     letter-spacing: 0.05em;
 }
 
-/* Project External Anchor Links */
+/* Custom Interactive Links */
 .project-link {
     text-decoration: none;
-    color: var(--accent);
-    font-weight: 600;
+    color: var(--accent-glow);
+    font-weight: bold;
     font-size: 0.9rem;
+    transition: opacity 0.2s;
 }
 
 .project-link:hover {
-    text-decoration: underline;
+    opacity: 0.8;
+}
+
+/* Structural Footer Layout */
+footer {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 0;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-dim);
+}
+
+footer a {
+    color: var(--accent-blue);
+    text-decoration: none;
+}
+
+/* Hero Layout Grid for Text & Portrait */
+.hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.hero-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Standout 3D Neon Portrait Frame */
+.hero-portrait-frame {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* Organic asymmetrical shape */
+    background: linear-gradient(45deg, var(--accent-blue), var(--accent-glow));
+    box-shadow: 0 0 30px rgba(0, 255, 204, 0.3);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hero-portrait-frame:hover {
+    transform: scale(1.05) rotate(3deg);
+    border-color: var(--accent-glow);
+}
+
+.hero-portrait-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
+}
+
+/* Fallback letter art if avatar.png isn't found yet */
+.fallback-avatar {
+    position: absolute;
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--text-bright);
+    z-index: 1;
+    font-family: system-ui, sans-serif;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.portrait-glow-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, transparent 40%, var(--bg-main) 100%);
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Continuous Keyframe Animation Loops */
+@keyframes float {
+    0% { transform: translateY(0px); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+    50% { transform: translateY(-12px); border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; }
+    100% { transform: translateY(0px); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Class to handle elements waiting for scroll trigger */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
 }
