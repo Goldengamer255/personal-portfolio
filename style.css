@@ -284,8 +284,8 @@ h2 {
 /* Portrait frame */
 .hero-portrait-frame {
     position: relative;
-    width: 280px;
-    height: 280px;
+    width: clamp(250px, 34vw, 360px);
+    aspect-ratio: 1;
     flex: none;
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
     background: linear-gradient(45deg, var(--accent-highlight), var(--accent-glow));
@@ -415,7 +415,7 @@ h2 {
     nav { flex-direction: column; align-items: flex-start; gap: 14px; padding: 20px 0; }
     nav ul { gap: 20px; }
     section { padding: 70px 0; }
-    .hero-portrait-frame { width: 220px; height: 220px; }
+    .hero-portrait-frame { width: min(78vw, 300px); }
     .hero-container { gap: 32px; }
 }
 
@@ -638,4 +638,23 @@ footer h2 { margin-bottom: 14px; }
 
 @media (prefers-reduced-motion: reduce) {
     .mail { transition: none; }
+}
+
+/* ============================================================
+   Step 4: project images
+   ============================================================ */
+.project-media {
+    display: block;
+    width: calc(100% + 70px);          /* bleed to the card edges (card padding is 35px) */
+    max-width: none;
+    height: auto;
+    aspect-ratio: 640 / 340;
+    margin: -35px -35px 26px;
+    border-bottom: 1px solid var(--line);
+    background: #0a1222;               /* shown while the image loads */
+}
+
+@media (max-width: 40rem) {
+    .project-card { padding: 24px; }
+    .project-media { width: calc(100% + 48px); margin: -24px -24px 22px; }
 }
