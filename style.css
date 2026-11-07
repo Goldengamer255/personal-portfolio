@@ -327,7 +327,7 @@ h2 {
 /* ============================================================
    Projects (unchanged from your version for now, cleaned of duplicates)
    ============================================================ */
-#projects h2 { margin-bottom: 40px; }
+#projects h2 { margin-bottom: 14px; }
 
 .project-grid {
     display: grid;
@@ -369,13 +369,14 @@ h2 {
 }
 
 .tech-badges {
+    list-style: none;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 30px;
 }
 
-.tech-badges span {
+.tech-badges li {
     background-color: rgba(255, 0, 127, 0.08);
     color: var(--accent-highlight);
     border: 1px solid rgba(255, 0, 127, 0.15);
@@ -408,24 +409,6 @@ h2 {
 }
 
 /* ============================================================
-   Footer (unchanged from your version for now)
-   ============================================================ */
-footer {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 60px 0;
-    text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    color: var(--text-dim);
-}
-
-footer a {
-    color: var(--accent-glow);
-    text-decoration: none;
-}
-footer a:hover { color: var(--accent-highlight); }
-
-/* ============================================================
    Small screens and reduced motion
    ============================================================ */
 @media (max-width: 40rem) {
@@ -442,4 +425,217 @@ footer a:hover { color: var(--accent-highlight); }
     .animate-float, .animate-fade-in, .dot { animation: none; }
     .scroll-reveal { opacity: 1; transform: none; transition: none; }
     .project-card, .btn { transition: none; }
+}
+
+/* ============================================================
+   Step 2: Toolbox, project filters, coursework note
+   ============================================================ */
+.section-note {
+    max-width: 40rem;
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    margin-bottom: 28px;
+}
+
+/* Toolbox */
+#skills { padding-top: 40px; }
+#skills h2 { margin-bottom: 32px; }
+
+.skill-groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 32px;
+}
+
+.skill-groups h3 {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-glow);
+    letter-spacing: 0.02em;
+    margin-bottom: 14px;
+}
+
+.tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tags li {
+    background: var(--bg-surface);
+    border: 1px solid var(--line);
+    color: var(--text-bright);
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 10px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.tags li:hover {
+    border-color: var(--accent-glow);
+    box-shadow: 0 0 14px rgba(0, 240, 255, 0.15);
+}
+
+/* Filters */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.chip {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-body);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    padding: 7px 18px;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.chip:hover {
+    border-color: var(--accent-glow);
+    color: var(--text-bright);
+}
+
+.chip[aria-pressed="true"] {
+    background: rgba(0, 240, 255, 0.1);
+    border-color: var(--accent-glow);
+    color: var(--accent-glow);
+    box-shadow: 0 0 16px rgba(0, 240, 255, 0.18);
+}
+
+/* display:flex on .project-card would override the hidden attribute */
+.project-card[hidden] { display: none; }
+
+.project-card .tech-badges { margin-bottom: 24px; }
+
+.coursework {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin: 0 !important;
+}
+
+.empty {
+    padding: 2rem 0;
+    color: var(--text-dim);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .chip, .tags li { transition: none; }
+}
+
+/* Keep the hover lift working after the reveal animation has finished */
+.project-card.scroll-reveal.active:hover { transform: translateY(-5px); }
+
+/* ============================================================
+   Step 3: Experience, Beyond code, Contact
+   ============================================================ */
+#experience, #beyond { padding-top: 40px; }
+
+.timeline {
+    list-style: none;
+    border-top: 1px solid var(--line);
+}
+
+.timeline li {
+    display: grid;
+    grid-template-columns: 11rem minmax(0, 1fr);
+    gap: 24px;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.when {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--accent-glow);
+    padding-top: 0.3rem;
+}
+
+.timeline h3,
+.beyond dt {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--text-bright);
+}
+
+.timeline h3 { margin-bottom: 6px; }
+.timeline p, .beyond dd { max-width: 40rem; }
+.timeline .detail { color: var(--text-dim); font-size: 0.95rem; margin-top: 8px; }
+
+.beyond { border-top: 1px solid var(--line); }
+
+.beyond > div {
+    display: grid;
+    grid-template-columns: 11rem minmax(0, 1fr);
+    gap: 24px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+/* Contact footer */
+footer {
+    max-width: 1000px;
+    margin: 40px auto 0;
+    padding: 90px 0 40px;
+    border-top: 1px solid var(--line);
+    text-align: left;
+}
+
+footer h2 { margin-bottom: 14px; }
+.contact-lead { max-width: 30rem; color: var(--text-body); }
+
+.mail {
+    display: inline-block;
+    margin-top: 26px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.4rem, 5.6vw, 2.9rem);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--accent-glow);
+    text-decoration: none;
+    text-shadow: 0 0 22px rgba(0, 240, 255, 0.35);
+    overflow-wrap: anywhere;
+    transition: color 0.2s, text-shadow 0.2s;
+}
+.mail:hover { color: var(--accent-highlight); text-shadow: 0 0 22px rgba(255, 0, 127, 0.4); }
+
+.links {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+    margin-top: 24px;
+    font-family: var(--font-display);
+    font-weight: 600;
+}
+.links a { color: var(--text-bright); text-decoration: none; }
+.links a:hover { color: var(--accent-highlight); }
+
+.fine {
+    margin-top: 70px;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+}
+
+@media (max-width: 40rem) {
+    .nav-optional { display: none; }
+    .timeline li, .beyond > div { grid-template-columns: 1fr; gap: 6px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mail { transition: none; }
 }
