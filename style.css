@@ -660,3 +660,11 @@ footer h2 { margin-bottom: 14px; }
     .project-card { padding: 24px; }
     .project-media { width: calc(100% + 48px); margin: -24px -24px 22px; }
 }
+
+/* "(in progress)" note beside a project title */
+.status-tag {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--accent-glow);
+    white-space: nowrap;
+}
